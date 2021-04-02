@@ -1,7 +1,8 @@
 {
   "name": "djsbot",
+  "start": "node index.js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Just a discord bot using discord.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
