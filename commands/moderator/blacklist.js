@@ -7,7 +7,7 @@ module.exports = {
   description: "blacklist a user from the bot!",
   category: "owner",
   run: async (client, message, args) => {
-    if (message.author.id !== '466778567905116170') return message.reply("This command can only be used by the owner... :facepalm:");
+    if (message.author.id !== '735237182649794571') return message.reply("This command can only be used by the owner... :facepalm:");
       //message.delete();
     let blacklist = JSON.parse(fs.readFileSync("commands/moderator/blacklist.json", "utf8"));
       let user = args[0];
