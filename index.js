@@ -353,6 +353,7 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
             if(parseInt(msgs) === 5) {
                 const rolename = 'mute' || 'muted'
                 const role = message.guild.roles.cache.find(roles => roles.name.toLowerCase() === rolename.toLowerCase())
+                console.log(role.name)
                 message.member.roles.add(role)
                 message.channel.send(`Muted ${message.author.username}, for spamming`)
                 setTimeout(() => {
