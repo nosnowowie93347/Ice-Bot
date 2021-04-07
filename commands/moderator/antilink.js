@@ -4,6 +4,7 @@ const db = require('quick.db');
 
 module.exports = {
     name: 'antilink',
+    category: "moderator",
     description: 'Changes the Antilink status for the server.',
     usage: 'antilink <channel>',
     run: async (client, message, args) => {
