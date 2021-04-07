@@ -2,7 +2,7 @@
 module.exports = {
     name: 'addemoji',
     aliases: ['em', 'emadd'],
-    category: 'Staff',
+    category: 'moderator',
     description: 'Add an emoji to the server.',
     usage: '<emoji to add>',
     run: async(client, message, args) => {
