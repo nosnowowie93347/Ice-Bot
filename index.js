@@ -255,6 +255,7 @@ let antilink = await db.fetch(`antilink_${message.guild.id}`);
   if (message.mentions.has(client.user)) {
     await message.channel.send(`My prefix is ${prefix}`)
   }
+ xp(message)
   if(message.author.bot || !message.content.startsWith(prefix)) return;
   let blacklist = JSON.parse(fs.readFileSync(path.resolve(__dirname, "commands/moderator/blacklist.json")));
   if (!blacklist[message.author.id]) {
@@ -276,7 +277,20 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
     }
   // which is set in the configuration file.
   
-  
+  function xp(message) {
+        if(message.author.bot) return
+        const randomNumber = Math.floor(Math.random() * 10) + 15;
+        db.add(`guild_${message.guild.id}_xp_${message.author.id}`, randomNumber) 
+        db.add(`guild_${message.guild.id}_xptotal_${message.author.id}`, randomNumber)
+        var level = db.get(`guild_${message.guild.id}_level_${message.author.id}`) || 1
+        var xp = db.get(`guild_${message.guild.id}_xp_${message.author.id}`)
+        var xpNeeded = level * 500;
+        if(xpNeeded < xp){
+            var newLevel = db.add(`guild_${message.guild.id}_level_${message.author.id}`, 1) 
+            db.subtract(`guild_${message.guild.id}_xp_${message.author.id}`, xpNeeded)
+            message.channel.send(`Congrats ${message.author}, you leveled up, you are now level ${newLevel}`)
+        }
+    }
 });
 client.on("messageDelete", async (message) => {
   if (message.partial || !message.guild || !message.content) return;
