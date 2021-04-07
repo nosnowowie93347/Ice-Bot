@@ -4,7 +4,7 @@ const neko = new client();
 
 module.exports = {
   name: "hug",
-  category: "expressions",
+  category: "fun",
   description: "hugs a mentioned user",
   usage: "[command] + [user]",
   run: async (client, message, args) => {
