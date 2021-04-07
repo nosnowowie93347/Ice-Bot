@@ -351,7 +351,8 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
         } else {
             ++msgs;
             if(parseInt(msgs) === 5) {
-                const rolename = 'mute' || 'muted'
+                console.log("you are here")
+                const rolename = 'mute' || 'muted' || "Mute" || "Muted"
                 const role = message.guild.roles.cache.find(roles => roles.name.toLowerCase() === rolename.toLowerCase())
                 console.log(role.name)
                 message.member.roles.add(role)
