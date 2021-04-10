@@ -39,7 +39,7 @@ module.exports = {
     .setFooter(`Banned by ${message.author.tag}`);
     
     message.channel.send(embed)
-    target.ban({ days: 7, reason: args[1] })
+    target.ban({ days: 7, reason: args[1] }).catch(error => message.reply(`An error occured: ${error}`));
     
     
     
