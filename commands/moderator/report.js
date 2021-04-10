@@ -34,7 +34,7 @@ module.exports = {
         await channel.send(embed);
 	}
 	catch(error) {
-		await message.reply(`an error occured: ${error})
+		await message.reply(`an error occured: ${error}`)
 }
 }
 }
