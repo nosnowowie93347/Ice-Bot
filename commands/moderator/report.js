@@ -31,6 +31,6 @@ module.exports = {
             **> Reported in:** ${message.channel}
             **> Reason:** ${args.slice(1).join(" ")}`);
 
-        await channel.send(embed)
+        await channel.send(embed).catch(error => message.reply(`An error occured: ${error}`));
 	}
 }
