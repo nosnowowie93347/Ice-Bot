@@ -8,7 +8,7 @@ const cwd = process.cwd()
 const MusicClient = require(`${cwd}/src/struct/Client.js`);
 const { Collection, Util } = require('discord.js');
 const Discord = require("discord.js")
-const client = new MusicClient({ ws: { intents: Intents.ALL }, token: process.env.token });
+const client = new MusicClient({ ws: { intents: Intents.ALL }, token: process.env.token, partials: ['MESSAGE', 'REACTION'] });
 const db = require("quick.db");
 const path = require("path");
 const moment = require('moment');
@@ -260,6 +260,37 @@ client.once('reconnecting', () => {
  client.on("warn", (e) => console.warn(e));
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 
+client.on('messageReactionAdd', async (reaction, user) => {
+  const handleStarboard = async () => {
+      const SBChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'starboard');
+      const msgs = await SBChannel.messages.fetch({ limit: 100 });
+      const SentMessage = msgs.find(msg => 
+          msg.embeds.length === 1 ?
+          (msg.embeds[0].footer.text.startsWith(reaction.message.id) ? true : false) : false);
+      if(SentMessage) SentMessage.edit(`${reaction.count} - ⭐`);
+      else {
+          const embed = new Discord.MessageEmbed()
+          .setAuthor(reaction.message.author.tag, reaction.message.author.displayAvatarURL())
+          .setDescription(`**[Jump to the message](${reaction.message.url})**\n\n${reaction.message.content}\n`)
+          .setColor('YELLOW')
+          .setFooter(reaction.message.id)
+          .setTimestamp();
+          if(SBChannel)
+          SBChannel.send('1 - ⭐', embed);
+      }
+  }
+  if(reaction.emoji.name === '⭐') {
+      if(reaction.message.channel.name.toLowerCase() === 'starboard') return;
+      if(reaction.message.partial) {
+          await reaction.fetch();
+          await reaction.message.fetch();
+          handleStarboard();
+      }
+      else
+      handleStarboard();
+  }
+});
+
 client.on("message", async message => {
   
   // This event will run on every single message received, from any channel or DM.
@@ -333,48 +364,6 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
             db.subtract(`guild_${message.guild.id}_xp_${message.author.id}`, xpNeeded)
             message.channel.send(`Congrats ${message.author}, you leveled up, you are now level ${newLevel}`)
         }
-    }
-    
-    if(map.has(message.author.id)) {
-        const data = map.get(message.author.id)
-        const { lastmsg, timer } = data;
-        const diff = message.createdTimestamp - lastmsg.createdTimestamp;
-        let msgs = data.msgs
-        if(diff > 2000) {
-            clearTimeout(timer);
-            data.msgs = 1;
-            data.lastmsg = message;
-            data.timer = setTimeout(() => {
-                map.delete(message.author.id);
-            }, 5000)
-            map.set(message.author.id, data)
-        } else {
-            ++msgs;
-            if(parseInt(msgs) === 5) {
-                console.log("you are here")
-                const rolename = 'mute' || 'muted' || "Mute" || "Muted"
-                const role = message.guild.roles.cache.find(roles => roles.name.toLowerCase() === rolename.toLowerCase())
-                console.log(role.name)
-                message.member.roles.add(role)
-                message.channel.send(`Muted ${message.author.username}, for spamming`)
-                setTimeout(() => {
-                    message.member.roles.remove(role)
-                    message.channel.send(`Unmuted ${message.author.username}`)
-                }, 5000)
-            } else {
-                data.msgs = msgs;
-                map.set(message.author.id, data)
-            }
-        }
-    } else {
-        let remove = setTimeout(() => {
-            map.delete(message.author.id);
-        }, 5000)
-        map.set(message.author.id, {
-            msgs: 1,
-            lastmsg: message,
-            timer: remove
-        })
     }
 });
 client.on("messageDelete", async (message) => {
