@@ -16,7 +16,7 @@ module.exports = (client) => {
         // If there's no name found, prevent it from returning an error,
         // By using a cross in the table we made.
         for (let file of commands) {
-            let pull = require(`../commands/${dir}/${file}`);
+            let pull = require(`../commands/${dir}/${file}`)
     
             if (pull.name) {
                 client.commands.set(pull.name, pull);
