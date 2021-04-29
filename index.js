@@ -400,5 +400,4 @@ client.on("messageDelete", async (message) => {
   if (logChannel) logChannel.send(embed);
 });
 
-Njk1MzcwMTA1MzA3MTM2MTMy.XoZL4A.0lS31qMPL-jGgRuXPFn8-IZYl0U
 client.login(config.token);
