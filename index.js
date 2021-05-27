@@ -351,9 +351,8 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
         command.run(client, message, args, ops);
     }
   // which is set in the configuration file.
-    let chatchannel = message.guild.channels.cache.find(channel => channel.name === 'bot-chat');
-    console.log(chatchannel.id)
-  if(message.channel.id === chatchannel.id) {
+
+  if(message.channel.id === "847549807233204224") {
       console.log("here!")
         fetch.default(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}&key=WvYZ9Zyv0AdRUdYXYWvZSPFHM`)
         .then(res => res.json())
