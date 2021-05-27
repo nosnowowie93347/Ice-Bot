@@ -357,6 +357,7 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
         .then(res => res.json())
         .then(data => {
             message.channel.send(data.response)
+            console.log(data.response)
         })
     }
   function xp(message) {
