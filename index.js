@@ -2,6 +2,7 @@
 const Intents = require("discord.js");
 const config = require("./config.json");
 const ms = require('ms');
+const fetch = require("node-fetch");
 const Canvas = require('canvas');
 const fs = require('fs')
 const cwd = process.cwd()
@@ -350,7 +351,14 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
         command.run(client, message, args, ops);
     }
   // which is set in the configuration file.
-  
+    let chatchannel = message.guild.channels.cache.find(channel => channel.name === 'bot-chat');
+  if(message.channel.id === chatchannel.id) {
+        fetch.default(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
+        .then(res => res.json())
+        .then(data => {
+            message.channel.send(data.response)
+        })
+    }
   function xp(message) {
         if(message.author.bot) return
         const randomNumber = Math.floor(Math.random() * 10) + 15;
