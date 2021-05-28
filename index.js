@@ -292,20 +292,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
   }
 });
 
-client.on("message", async message => {
-          if(message.author.client) return;
-          if(message.channel.type === "dm") {
-              const dmEmbed = new Discord.MessageEmbed()
-                .setTitle("New DM")
-                .setColor("RANDOM")
-                .setTimestamp()
-                .setDescription(`**User:** ${message.author.tag}\n**User ID:** ${message.author.id}\n**At:** ${new Date()}\n\n**Content:** \`\`\`${message.content}\`\`\``)
-              
-              const DMC = client.channels.cache.get("846810909439164437")
-              console.log(DMC)
-              DMC.send(dmEmbed)
-          }
-  
+client.on("message", async (message) => {
+          
   // This event will run on every single message received, from any channel or DM.
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
@@ -364,16 +352,6 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
     }
   // which is set in the configuration file.
 
-  if(message.channel.id === "847549807233204224") {
-      console.log("here!")
-        fetch.default(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}&key=WvYZ9Zyv0AdRUdYXYWvZSPFHM`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data.response)
-            message.channel.send(data.response)
-            
-        })
-    }
   function xp(message) {
         if(message.author.bot) return
         const randomNumber = Math.floor(Math.random() * 10) + 15;
