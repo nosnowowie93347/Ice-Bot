@@ -57,7 +57,7 @@
     "urban": "0.3.2",
     "util": "^0.12.3",
     "weather-js": "^2.0.0",
-    "ytdl-core": "^4.5.0"
+    "ytdl-core": "^4.8.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
