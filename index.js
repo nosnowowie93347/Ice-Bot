@@ -302,6 +302,7 @@ client.on("message", async message => {
                 .setDescription(`**User:** ${message.author.tag}\n**User ID:** ${message.author.id}\n**At:** ${new Date()}\n\n**Content:** \`\`\`${message.content}\`\`\``)
               
               const DMC = client.channels.cache.get("846810909439164437")
+              console.log(DMC)
               DMC.send(dmEmbed)
           }
   
