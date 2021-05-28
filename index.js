@@ -292,7 +292,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
   }
 });
 
-client.on("message", async message => 
+client.on("message", async message => {
           if(message.author.client) return;
           if(message.channel.type === "dm") {
               const dmEmbed = new Discord.MessageEmbed()
