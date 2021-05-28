@@ -292,7 +292,18 @@ client.on('messageReactionAdd', async (reaction, user) => {
   }
 });
 
-client.on("message", async message => {
+client.on("message", async message => 
+          if(message.author.client) return;
+          if(message.channel.type === "dm") {
+              const dmEmbed = new Discord.MessageEmbed()
+                .setTitle("New DM")
+                .setColor("RANDOM")
+                .setTimestamp()
+                .setDescription(`**User:** ${message.author.tag}\n**User ID:** ${message.author.id}\n**At:** ${new Date()}\n\n**Content:** \`\`\`${message.content}\`\`\``)
+              
+              const DMC = client.channels.cache.get("846810909439164437")
+              DMC.send(dmEmbed)
+          }
   
   // This event will run on every single message received, from any channel or DM.
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
