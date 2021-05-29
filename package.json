@@ -54,6 +54,7 @@
     "sourcebin": "^3.2.4",
     "superagent": "^5.3.1",
     "twemoji-parser": "^13.0.0",
+    "ultrax": "^1.0.9",
     "urban": "0.3.2",
     "util": "^0.12.3",
     "weather-js": "^2.0.0",
