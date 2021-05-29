@@ -18,7 +18,7 @@ module.exports = {
     category: 'owner',
 	run: async (client, message, args) => {
         const msg = message;
-	if (message.author.id !== "735237182649794571") {
+	if (message.author.id !== "466778567905116170") {
 		return message.reply("YOU AREN'T THE OWNER")
 	}
         if (!args.length) return message.channel.send('You must provide something to evaluate.');
