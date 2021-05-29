@@ -15,6 +15,7 @@ const path = require("path");
 const moment = require('moment');
 const os = require('os');
 const DisTube = require('distube')
+const { passGen } = require("ultrax")
 
 const map = new Map();
 
@@ -175,6 +176,32 @@ const applyText = (canvas, text) => {
 };
 
 client.on('guildMemberAdd', async member => {
+    const captcha = passGen(6)
+    try {
+        const msg = await member.send(`||${captcha}||, This is your captcha, you have 1m to solve it!`)
+        try {
+            const filter = m => {
+                if(m.author.bot) return;
+                if(m.author.id === member.id && m.content === captcha) return true;
+                else {
+                    m.channel.send("You entered the captcha wrong!") 
+                    return false;
+                }
+            };
+            const response = await msg.channel.awaitMessages(filter, { max: 1, time: ms('15s'), errors: ['time'] });
+            if(response) {
+                await msg.channel.send("You entered captcha correctly, You have verified yourself!")
+                member.roles.add('729670291768213514')
+            }
+        } 
+        catch (err) {
+            await msg.channel.send("You didn't solve the captcha on time, you got kicked from the server")
+            await member.kick()
+        }
+    } 
+    catch (err) {
+        console.log(err)
+    }
   const channel = member.guild.channels.cache.find(ch => ch.name === 'logs');
   if (!channel) return;
 
