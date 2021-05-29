@@ -334,10 +334,7 @@ let ops = {
   queue3: queue3,
   games: games
 }
-let prefix = await db.fetch(`prefix_${message.guild.id}`);
-    if (!prefix) {
-      prefix = '#'
-    }
+
 let antilink = await db.fetch(`antilink_${message.guild.id}`);
   if (antilink){
     if (antilink === 'on'){
@@ -355,10 +352,10 @@ let antilink = await db.fetch(`antilink_${message.guild.id}`);
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
   if (message.mentions.has(client.user)) {
-    await message.channel.send(`My prefix is ${prefix}`)
+    await message.channel.send(`My prefix is ${config.prefix}`)
   }
  xp(message)
-  if(message.author.bot || !message.content.startsWith(prefix)) return;
+  if(message.author.bot || !message.content.startsWith(config.prefix)) return;
   let blacklist = JSON.parse(fs.readFileSync(path.resolve(__dirname, "commands/moderator/blacklist.json")));
   if (!blacklist[message.author.id]) {
   blacklist[message.author.id] = {state: false}
