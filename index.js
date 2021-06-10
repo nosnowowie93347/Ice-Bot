@@ -18,6 +18,27 @@ const DisTube = require('distube')
 const { passGen } = require("ultrax")
 
 const map = new Map();
+require('discord-buttons')(client)
+const { MessageButton, MessageActionRow } = require("discord-buttons")
+
+
+
+client.on('clickButton', async (button) => {
+    
+    if(button.id == 'AddXRole') {
+        button.reply.send(`You got the nodm role!`, true)
+        const role = button.guild.roles.cache.get(role => role.name === 'nodm')
+        const member = button.clicker.member
+        await member.roles.add(role)
+    }
+
+    if(button.id == 'RevXRole') {
+        button.reply.send(`Removed nodm role!`, true)
+        const role = button.guild.roles.cache.get(role => role.name === 'nodm')
+        const member = button.clicker.member
+        await member.roles.remove(role)
+    }
+});
 
 
 client.distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: false });
