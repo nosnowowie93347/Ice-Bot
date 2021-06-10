@@ -1,6 +1,6 @@
 {
   "token": "your bot token",
   "prefix": "chosen prefix",
-  "giphy_API": "giphy api key (get key from https://developers.giphy.com/)",
-  "google": "your google api key (instructions for how to get this here https://elfsight.com/blog/2020/03/how-to-use-google-cloud-api-platform-and-get-an-api-key/)"
+  "giphy_API": "giphy api key (tutorial: https://youtu.be/NCXOpaEnQkA)",
+  "google": "your google api key (tutorial: https://youtu.be/NCXOpaEnQkA)"
 }
