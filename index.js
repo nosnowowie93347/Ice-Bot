@@ -191,7 +191,10 @@ client.on('guildMemberAdd', async member => {
             const response = await msg.channel.awaitMessages(filter, { max: 1, time: ms('15s'), errors: ['time'] });
             if(response) {
                 await msg.channel.send("You entered captcha correctly, You have verified yourself!")
-                member.roles.add('848288382811635762')
+                let mrole = member.guild.roles.cache.find(role => role.name === 'unverified');
+                if (mrole) {
+                member.roles.add(mrole)
+                }
             }
         } 
         catch (err) {
