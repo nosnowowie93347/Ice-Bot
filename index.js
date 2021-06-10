@@ -27,7 +27,7 @@ client.on('clickButton', async (button) => {
     
     if(button.id == 'AddXRole') {
         button.reply.send(`You got the nodm role!`, true)
-        const role = button.guild.roles.cache.get(role => role.name === 'nodm')
+        const role = button.guild.roles.cache.find(role => role.name === 'nodm')
         const member = button.clicker.member
         await member.roles.add(role)
     }
