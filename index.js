@@ -338,20 +338,6 @@ let ops = {
   games: games
 }
 
-let antilink = await db.fetch(`antilink_${message.guild.id}`);
-  if (antilink){
-    if (antilink === 'on'){
-      if(/(?:https?:\/)?discord(?:app.com\/invite|.gg)/gi.test(message.content)){
-        if (message.author.id !== '466778567905116170'){
-          if (!message.member.hasPermission("MANAGE_ROLES")){
-            message.delete();
-            message.reply(`OI ${message.author.username}, don't advertise your stuff, or ban!`);
-            return;
-          }
-        }
-      }
-    }
-  }
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
   if (message.mentions.has(client.user)) {
