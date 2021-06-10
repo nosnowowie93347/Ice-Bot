@@ -34,7 +34,7 @@ client.on('clickButton', async (button) => {
 
     if(button.id == 'RevXRole') {
         button.reply.send(`Removed nodm role!`, true)
-        const role = button.guild.roles.cache.get(role => role.name === 'nodm')
+        const role = button.guild.roles.cache.find(role => role.name === 'nodm')
         const member = button.clicker.member
         await member.roles.remove(role)
     }
