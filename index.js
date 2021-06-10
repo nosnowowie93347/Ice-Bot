@@ -366,6 +366,7 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
   // which is set in the configuration file.
 
   function xp(message) {
+      if (message.channel.type !== "dm") {
         if(message.author.bot) return
         const randomNumber = Math.floor(Math.random() * 10) + 15;
         db.add(`guild_${message.guild.id}_xp_${message.author.id}`, randomNumber) 
@@ -379,6 +380,7 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
             message.channel.send(`Congrats ${message.author}, you leveled up, you are now level ${newLevel}`)
         }
     }
+  }
 });
 client.on("messageDelete", async (message) => {
   if (message.partial || !message.guild || !message.content) return;
