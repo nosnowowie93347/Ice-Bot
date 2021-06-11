@@ -6,8 +6,7 @@ module.exports = {
   description: "set the server prefix",
   usage: "prefix <prefix>",
   category: "Moderator",
-  run: async (client, message, args, prefix) => {
-    if(!message.content.startsWith(prefix)) return;
+  run: async (client, message, args) => {
 
     if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('you dont have perm to use this cmd')
 
