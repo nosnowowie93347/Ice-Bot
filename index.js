@@ -344,9 +344,16 @@ client.on('messageReactionAdd', async (reaction, user) => {
 });
 
 client.on("message", async (message) => {
-          
+    let prefix;
+// no one did =setprefix
+    let prefixes = await db.fetch(`prefix_${message.guild.id}`);
+    if(prefixes == null) {
+        prefix = config.prefix // this will be the default prefix
+    } else {
+        prefix = prefixes;
+    }
   // This event will run on every single message received, from any channel or DM.
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
   const queue2 = new Map();
 const queue3 = new Map();
@@ -362,10 +369,10 @@ let ops = {
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
   if (message.mentions.has(client.user)) {
-    await message.channel.send(`My prefix is ${config.prefix}`)
+    await message.channel.send(`My prefix is ${prefix}`)
   }
  xp(message)
-  if(message.author.bot || !message.content.startsWith(config.prefix)) return;
+  if(message.author.bot || !message.content.startsWith(prefix)) return;
   let blacklist = JSON.parse(fs.readFileSync(path.resolve(__dirname, "commands/moderator/blacklist.json")));
   if (!blacklist[message.author.id]) {
   blacklist[message.author.id] = {state: false}
