@@ -411,6 +411,12 @@ if (blacklist[message.author.id].state === true) return await message.reply("NOP
   }
 });
 client.on("messageDelete", async (message) => {
+    if(message.mentions.users.first()) {
+        const embed = new Discord.MessageEmbed()
+        .setTitle("Ghost Ping")
+        .setDescription(`${message.author.tag} ghost pinged ${message.mentions.users.first()}`)
+        return message.channel.send(embed)
+    }
   if (message.partial || !message.guild || !message.content) return;
 
   const audits = await message.guild.fetchAuditLogs({ type: "MESSAGE_DELETE" });
@@ -444,4 +450,14 @@ client.on("messageDelete", async (message) => {
   if (logChannel) logChannel.send(embed);
 });
 
+client.on('messageUpdate', async(oldMessage, newMessage) => {
+   
+    if(oldMessage.mentions.users.first()) {
+        const embed = new Discord.MessageEmbed()
+        .setTitle("Ghost Ping")
+        .setDescription(`${oldMessage.author.tag} ghost pinged ${oldMessage.mentions.users.first()}`)
+        return oldMessage.channel.send(embed)
+    }
+
+})
 client.login(config.token);
