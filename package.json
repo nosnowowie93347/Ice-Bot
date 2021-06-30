@@ -36,7 +36,6 @@
     "mal-scraper": "^2.11.3",
     "moment": "^2.29.1",
     "moment-timezone": "0.5.33",
-    "mongoose": "^5.12.13",
     "ms": "^2.1.2",
     "nekos.life": "^2.0.7",
     "node-ddg": "^2.2.3",
@@ -56,11 +55,11 @@
     "sourcebin": "^3.2.4",
     "superagent": "^5.3.1",
     "twemoji-parser": "^13.0.0",
-    "ultrax": "^1.0.9",
+    "ultrax": "^1.5.2",
     "urban": "0.3.2",
     "util": "^0.12.3",
     "weather-js": "^2.0.0",
-    "ytdl-core": "^4.8.2"
+    "ytdl-core": "^4.8.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
