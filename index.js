@@ -199,6 +199,9 @@ const applyText = (canvas, text) => {
 client.on('guildMemberAdd', async member => {
     const captcha = passGen(6)
     try {
+        if (member.user.bot) {
+            return
+        }
         const msg = await member.send(`||${captcha}||, This is your captcha, you have 1m to solve it!`)
         try {
             const filter = m => {
