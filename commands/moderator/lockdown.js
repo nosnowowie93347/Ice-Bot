@@ -4,7 +4,7 @@ module.exports = {
     name: "lockdown",
     category: "moderator",
     description: "lockdown channels to prevent ppl from sending messages",
-    run: async (client, message, args => {
+    run: async (client, message, args) => {
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You dont have enough permission to execute this command")
     if(!message.member.guild.me.hasPermission("MANAGE_CHANNELS")) return message.channel.send("I dont have enough permissions")
 
@@ -21,5 +21,5 @@ module.exports = {
 
     message.channel.send("Successfully locked all the channels")
 
-})
+}
 }
