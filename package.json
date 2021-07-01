@@ -32,7 +32,7 @@
     "google-play-scraper": "8.0.2",
     "hastebin-gen": "2.0.5",
     "imdb-api": "^4.4.1",
-    "libnpmsearch": "3.1.0",
+    "libnpmsearch": "3.1.2",
     "mal-scraper": "^2.11.3",
     "moment": "^2.29.1",
     "moment-timezone": "0.5.33",
