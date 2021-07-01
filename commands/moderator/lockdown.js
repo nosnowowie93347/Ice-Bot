@@ -21,5 +21,5 @@ module.exports = {
 
     message.channel.send("Successfully locked all the channels")
 
-}
+})
 }
