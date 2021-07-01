@@ -52,7 +52,7 @@
     "request-promise-native": "^1.0.9",
     "snekfetch": "^4.0.4",
     "something-random-on-discord": "^3.3.2",
-    "sourcebin": "^3.2.4",
+    "sourcebin": "^4.2.5",
     "superagent": "^6.1.0",
     "twemoji-parser": "^13.0.0",
     "ultrax": "^1.5.2",
