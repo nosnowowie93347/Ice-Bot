@@ -9,7 +9,7 @@ module.exports = {
     const Option1 = new MessageMenuOption()
     .setLabel("Cola")
     .setDescription("A soda drink")
-    .setEmoji('🍹')
+    .setEmoji(':tropical_drink:')
     .setValue('cola')
 
     const Option2 = new MessageMenuOption()
