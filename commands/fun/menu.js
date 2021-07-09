@@ -9,18 +9,19 @@ module.exports = {
     const Option1 = new MessageMenuOption()
     .setLabel("Cola")
     .setDescription("A soda drink")
-    .setEmoji(':tropical_drink:')
+    .setEmoji('🍹')
     .setValue('cola')
 
     const Option2 = new MessageMenuOption()
     .setLabel("Water")
     .setDescription("Water to drink")
-    .setEmoji(':potable_water:')
+    .setEmoji('💧')
     .setValue('water')
 
     const Option3 = new MessageMenuOption()
     .setLabel("Reload")
     .setDescription("Reload the message")
+    .setEmoji("🔄")
     .setValue('reload')
 
     const Menu = new MessageMenu()
