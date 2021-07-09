@@ -1,9 +1,10 @@
-onst discord = require('discord.js')
+const discord = require('discord.js')
 const { MessageMenuOption, MessageMenu, MessageActionRow } = require("discord-buttons")
 
-module.exports = 
+module.exports = {
   name: "menu",
-  run: async (Client, message, args, prefix) => {
+  category: 'fun',
+  run: async (client, message, args) => {
 
     const Option1 = new MessageMenuOption()
     .setLabel("Cola")
@@ -74,4 +75,5 @@ module.exports =
 
     })
 
+}
 }
