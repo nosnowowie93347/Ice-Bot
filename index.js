@@ -319,7 +319,7 @@ client.on("message", async (message) => {
     let prefix;
 // no one did =setprefix
     if (message.channel.type === "dm") {
-        return message.channel.send("CANNOT USE COMMANDS IN DM")
+        return
     }
     let prefixes = await db.fetch(`prefix_${message.guild.id}`);
     if(prefixes == null) {
