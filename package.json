@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@extreme_hero/deeptype": "^1.0.1",
-    "aki-api": "5.2.1",
+    "aki-api": "6.0.3",
     "ascii-table": "0.0.9",
     "bindings": "^1.5.0",
     "canvacord": "^5.1.0",
