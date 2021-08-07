@@ -9,3 +9,4 @@ updates:
       - dependency-name: "twemoji-parser"
       - dependency-name: "aki-api"
       - dependency-name: "sourcebin"
+      - dependency-nname: "discord.js"
