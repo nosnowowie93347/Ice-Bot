@@ -6,6 +6,7 @@ updates:
       interval: daily
     ignore:
       - dependency-name: "novelcovid"
+      - dependency-name: "node-fetch"
       - dependency-name: "ultrax"
       - dependency-name: "twemoji-parser"
       - dependency-name: "aki-api"
