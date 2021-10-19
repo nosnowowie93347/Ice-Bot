@@ -10,5 +10,6 @@ updates:
       - dependency-name: "ultrax"
       - dependency-name: "twemoji-parser"
       - dependency-name: "aki-api"
+      - dependency-name: "distube"
       - dependency-name: "sourcebin"
       - dependency-name: "discord.js"
